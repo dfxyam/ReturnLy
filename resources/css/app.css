@@ -11,11 +11,11 @@
     --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
     --font-poppins: "Poppins", sans-serif;
 
-    /* Color Palette - Primary */
-    --color-primary-50: #e6f0f9;
-    --color-primary-100: #cce1f3;
-    --color-primary-200: #99c3e7;
-    --color-primary-300: #66a5db;
+    /* Color Palette - Primary (Signal Blue) */
+    --color-primary-50: #e6f4fb;
+    --color-primary-100: #cce9f7;
+    --color-primary-200: #99d3ef;
+    --color-primary-300: #66bde7;
     --color-primary-400: #4e9ad9;
     --color-primary-500: #367fb8;
     --color-primary-600: #2a6494;
@@ -127,5 +127,26 @@
 @layer utilities {
     .font-poppins {
         font-family: "Poppins", sans-serif;
+    }
+
+    /* Shimmer animation for skeleton loader */
+    @keyframes shimmer {
+        0% {
+            background-position: -468px 0;
+        }
+        100% {
+            background-position: 468px 0;
+        }
+    }
+
+    .animate-shimmer {
+        animation: shimmer 1.5s infinite linear;
+        background: linear-gradient(
+            to right,
+            #f1f5f9 8%,
+            #e2e8f0 18%,
+            #f1f5f9 33%
+        );
+        background-size: 800px 104px;
     }
 }

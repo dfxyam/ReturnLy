@@ -7,17 +7,18 @@
 
     <title>{{ $title ?? 'ReturnLy' }} - Lost & Found System</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Scripts & Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-poppins antialiased bg-surface text-text-primary">
-    <div class="min-h-screen">
+<body class="font-poppins antialiased bg-surface text-text-primary min-h-screen flex flex-col">
+    {{-- Navbar --}}
+    <x-layout.navbar />
+
+    {{-- Main Content --}}
+    <main class="flex-1">
         {{ $slot }}
-    </div>
+    </main>
+
+    {{-- Footer --}}
+    <x-layout.footer />
 </body>
 </html>
