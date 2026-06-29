@@ -35,5 +35,5 @@ Platform Lost & Found digital untuk lingkungan sekolah yang membantu siswa dan g
 
 1. **Clone repository**
 ```bash
-git clone https://github.com/username/returnly.git
+git clone https://github.com/dfxyam/returnly.git
 cd returnly
