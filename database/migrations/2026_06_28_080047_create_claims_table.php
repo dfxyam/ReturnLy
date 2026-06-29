@@ -10,16 +10,25 @@ return new class extends Migration
     {
         Schema::create('claims', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('found_item_id')->constrained('found_items')->cascadeOnUpdate()->restrictOnDelete();
-            $table->string('claimer_name', 100);
-            $table->string('class_name', 50)->nullable();
-            $table->string('phone_number', 20);
-            $table->text('reason');
+            $table->foreignId('found_item_id')->constrained('found_items')->cascadeOnDelete();
+            
+            // Informasi Pengklaim
+            $table->string('claimant_name');
+            $table->string('email');
+            $table->string('phone_number');
+            $table->string('class_name')->nullable();
+            
+            // Bukti Kepemilikan
+            $table->text('proof_description');
+            $table->string('proof_photo')->nullable();
+            
+            // Status & Tracking
+            $table->string('claim_number')->unique();
             $table->enum('status', ['Pending', 'Disetujui', 'Ditolak'])->default('Pending');
+            $table->text('admin_notes')->nullable();
+            $table->timestamp('processed_at')->nullable();
+            
             $table->timestamps();
-
-            $table->index('status');
-            $table->index('found_item_id');
         });
     }
 

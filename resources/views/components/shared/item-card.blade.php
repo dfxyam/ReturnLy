@@ -8,7 +8,7 @@
     {{-- Image --}}
     <div class="aspect-[4/3] bg-surface overflow-hidden">
         @if($item && $item->photo)
-            <img src="{{ asset('storage/items/' . $item->photo) }}" 
+            <img src="{{ asset('storage/' . $item->photo) }}" 
                  alt="{{ $item->item_name }}" 
                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
         @else

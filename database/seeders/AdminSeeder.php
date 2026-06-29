@@ -10,9 +10,14 @@ class AdminSeeder extends Seeder
 {
     public function run(): void
     {
-        Admin::create([
-            'username' => 'admin',
-            'password' => Hash::make('admin123'),
-        ]);
+        // updateOrCreate: Cek username 'admin', jika ada diupdate, jika tidak ada dibuat baru
+        Admin::updateOrCreate(
+            ['username' => 'admin'],
+            [
+                'password' => Hash::make('password'),
+            ]
+        );
+
+        $this->command->info('✅ Admin user ready!');
     }
 }
