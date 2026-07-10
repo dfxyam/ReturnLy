@@ -2,16 +2,16 @@
 
 Platform Lost & Found digital untuk lingkungan sekolah yang membantu siswa dan guru menemukan barang yang hilang dengan mudah dan efisien.
 
-![ReturnLy](https://img.shields.io/badge/Version-1.0.0-blue)
-![Laravel](https://img.shields.io/badge/Laravel-11.x-red)
-![PHP](https://img.shields.io/badge/PHP-8.2+-purple)
+![Laravel](https://img.shields.io/badge/Laravel-13.x-red)
+![PHP](https://img.shields.io/badge/PHP-8.5+-purple)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-blue)
 
 ## ✨ Fitur Utama
 
 ### 👤 Untuk Tamu (Guest)
 - 📝 Lapor Barang Hilang dengan detail lengkap
 - 🔍 Lapor Barang Ditemukan untuk membantu sesama
-- 📋 Cek Status Klaim dengan nomor klaim atau WhatsApp
+- 📋 Cek Status Klaim dengan nomor klaim
 - 🖼️ Upload foto sebagai bukti
 - 📱 Responsive design untuk mobile
 
@@ -22,18 +22,32 @@ Platform Lost & Found digital untuk lingkungan sekolah yang membantu siswa dan g
 - 🏷️ Manajemen Kategori & Lokasi
 - 🔄 Auto-update status barang
 
+### 🔔 Notifikasi
+- 📧 Email notification via Brevo SMTP
+- 📱 WhatsApp notification via Fonnte API
+
 ## 🚀 Instalasi
 
-### Prasyarat
-- PHP 8.2 atau lebih baru
-- Composer
-- Node.js & NPM
-- MySQL / MariaDB
-- XAMPP / Laravel Herd / DB server lainnya
-
-### Langkah Instalasi
-
-1. **Clone repository**
 ```bash
-git clone https://github.com/dfxyam/returnly.git
+# Clone repository
+git clone https://github.com/username/returnly.git
 cd returnly
+
+# Install dependencies
+composer install
+npm install
+
+# Setup environment
+copy .env.example .env
+php artisan key:generate
+
+# Konfigurasi database di .env
+# Jalankan migration & seeder
+php artisan migrate --seed
+php artisan storage:link
+
+# Compile assets
+npm run dev
+
+# Run server
+php artisan serve
