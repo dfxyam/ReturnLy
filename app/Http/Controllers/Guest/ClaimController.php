@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreClaimRequest;
 use App\Models\Claim;
 use App\Models\FoundItem;
+use App\Mail\ClaimSubmittedMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
 class ClaimController extends Controller
@@ -49,6 +52,14 @@ class ClaimController extends Controller
 
         // Create claim
         $claim = Claim::create($data);
+
+        // Kirim email konfirmasi ke pengklaim
+        try {
+            Mail::to($claim->email)->send(new ClaimSubmittedMail($claim));
+            Log::info('Email konfirmasi klaim terkirim ke: ' . $claim->email);
+        } catch (\Exception $e) {
+            Log::error('Email konfirmasi klaim gagal: ' . $e->getMessage());
+        }
 
         // Update found item status
         $foundItem->update(['status' => 'Diklaim']);
